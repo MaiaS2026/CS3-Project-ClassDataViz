@@ -15,9 +15,17 @@ df['Wakeup Time Weekend'] = pd.to_datetime(df['Wakeup Time Weekend'], format='%H
 
 # ZODIAC PIE CHART
 zodiac_counts = df['Zodiac Element'].value_counts()
-colors = ["#df3b3b","#3389df","#5f8e5f","#c4c4c4"]
+colors = ["#63C5DA","#3389df","#2832C2","#48AAAD"]
 plt.pie(zodiac_counts.values, labels=zodiac_counts.index, colors=colors, startangle=90, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 plt.title('Distribution of Zodiac Elements') 
 plt.axis('equal')
 plt.savefig('zodiac_element_pie.png', bbox_inches='tight')
 plt.close()
+
+# BAR CHART
+hog_house = df['Hogwarts House'].value_counts()
+colors = ["#7F0909","#194729","#222F5B","#ecb939"]
+plt.bar(hog_house.index, hog_house.values)
+plt.xlabel('Hogwarts House')
+plt.ylabel('Amount of students in house')
+plt.savefig('hog_house_bar.png', bbox_inches='tight')
