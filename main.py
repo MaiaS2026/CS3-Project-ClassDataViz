@@ -24,8 +24,10 @@ plt.close()
 
 # BAR CHART
 hog_house = df['Hogwarts House'].value_counts()
-colors = ["#7F0909","#194729","#222F5B","#ecb939"]
-plt.bar(hog_house.index, hog_house.values)
+colors = ["#7F0909","#194729","#222F5B","#000000","#ecb939"]
+plt.bar(hog_house.index, hog_house.values, color=colors[:len(hog_house)])
 plt.xlabel('Hogwarts House')
 plt.ylabel('Amount of students in house')
 plt.savefig('hog_house_bar.png', bbox_inches='tight')
+plt.show
+
