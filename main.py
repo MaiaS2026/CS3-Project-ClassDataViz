@@ -1,7 +1,6 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-import matplotlib.image as mpimg
 
 # Set style theme
 plt.style.use('seaborn-v0_8-deep')
@@ -27,38 +26,17 @@ plt.close()
 # BAR CHART
 hog_house = df['Hogwarts House'].value_counts()
 colors = ["#7F0909","#194729","#222F5B","#000000","#ecb939"]
-bars = plt.bar(hog_house.index, hog_house.values, color=colors[:len(hog_house)])
+ # bars = plt.bar(hog_house.index, hog_house.values, color=colors[:len(hog_house)])
 plt.xlabel('Hogwarts House')
 plt.ylabel('Amount of students in house')
 plt.savefig('hog_house_bar.png', bbox_inches='tight')
 
-house_images = {
-    "Gryffindor": "gryff.png",
-    "Slytherin": "slyth.png",
-    "Ravenclaw": "raven.png",
-    "Hufflepuff": "huff.png",
-    "the hat": "hat.webp"
-}
+fig, ax = plt.subplots(dpi=300)
+barchart = ax.bar(hog_house.index, hog_house.values, color=colors:len(hog_house))
 
-for bar in bars:
-    house = bar.get_x() + bar.get_width()/2 
+               
 
-    height = bar.get_height()             
 
-    # Load image
-    img = mpimg.imread(house_images[bar.get_x()]) 
-
-    imagebox = OffsetImage(img, zoom=0.15)  
-    ab = AnnotationBbox(imagebox, (house, height),
-                        frameon=False,
-                        xybox=(0, 20),      
-                        xycoords='data',
-                        boxcoords='offset points')
-
-    plt.gca().add_artist(ab)
-
-# Save figure
-plt.savefig('hog_house_bar.png', bbox_inches='tight')
 plt.show()
 
 
